@@ -51,8 +51,8 @@ static std::string fmt_error_with_source(const std::string & tag, const std::str
 // Note: this is a simple hasher, not cryptographically secure, just for hash table usage
 struct hasher {
     static constexpr auto size_t_digits = sizeof(size_t) * 8;
-    static constexpr size_t prime = size_t_digits == 64 ? 0x100000001b3 : 0x01000193;
-    static constexpr size_t seed = size_t_digits == 64 ? 0xcbf29ce484222325 : 0x811c9dc5;
+    static constexpr size_t prime = size_t(size_t_digits == 64 ? 0x100000001b3 : 0x01000193);
+    static constexpr size_t seed = size_t(size_t_digits == 64 ? 0xcbf29ce484222325 : 0x811c9dc5);
     static constexpr auto block_size = sizeof(size_t); // in bytes; allowing the compiler to vectorize the computation
 
     static_assert(size_t_digits == 64 || size_t_digits == 32);

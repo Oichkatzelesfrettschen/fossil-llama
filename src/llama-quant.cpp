@@ -39,7 +39,7 @@ enum class tensor_category {
 };
 
 // max amount of tensor data kept in memory while quantizing a single tensor
-static const size_t LLAMA_QUANT_MAX_BUF_SIZE = 8ull*1024*1024*1024;
+static const size_t LLAMA_QUANT_MAX_BUF_SIZE = std::min<uint64_t>(SIZE_MAX, 8ull*1024*1024*1024);
 
 static void zeros(std::ofstream & file, size_t n) {
     char zero = 0;
